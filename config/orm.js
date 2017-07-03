@@ -7,7 +7,7 @@
 // updateOne()
 // Export the ORM object in module.exports.
 
-var connection = require("../config/connections.js");
+var connection = require("../config/connection.js");
 
 // All of our ORMs:
 
