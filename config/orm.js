@@ -7,29 +7,51 @@
 // updateOne()
 // Export the ORM object in module.exports.
 
-var connection = require("./connection.js");
+var connection = require("../config/connections.js");
 
-// Object Relational Mapper (ORM)
+// All of our ORMs:
 
 var orm = {
-  selectAll: function(tableInput, colToSearch, valOfCol) {
-    var queryString = "SELECT * FROM ?? WHERE ?? = ?";
-    connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
-      console.log(result);
-    });
-  },
-  selectAndOrder: function(whatToSelect, table, orderCol) {
-    var queryString = "SELECT ?? FROM ?? ORDER BY ?? DESC";
-    console.log(queryString);
-    connection.query(queryString, [whatToSelect, table, orderCol], function(err, result) {
-      console.log(result);
-    });
-  },
-  findWhoHasMost: function(tableOneCol, tableTwoForeignKey, tableOne, tableTwo) {
-    var queryString = "SELECT ??, COUNT(??) AS count FROM ?? LEFT JOIN ?? ON ??.??= ??.id GROUP BY ?? ORDER BY count DESC LIMIT 1";
 
-    connection.query(queryString, [tableOneCol, tableOneCol, tableOne, tableTwo, tableTwo, tableTwoForeignKey, tableOne, tableOneCol], function(err, result) {
-      console.log(result);
+  //Selecting everything within the table. tableInput is the table name:
+  selectAll: function(tableInput, cb) {
+    var queryString = "SELECT * FROM " + tableInput + ";";
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  
+  //Adding an item into the table
+  //INSERT INTO ?? = table name,
+  //SET ? = an object that contains the details of the new item.
+
+  insertOne: function(tableName, object, cb) {
+    var queryString = "INSERT INTO ?? SET ?";
+    connection.query(queryString, [tableName, object], function(err, res){
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+
+  //Updates one item on the table: 
+  //UPDATE = table name,
+  //SET = what you would like to update,
+  //WHERE = where you would like to update
+
+  updateOne: function(tableName, whatToUpdate, whereToUpdate, cb) {
+    var queryString = "UPDATE ?? SET ? WHERE ?";
+
+    connection.query(queryString, [tableName, whatToUpdate, whereToUpdate], function(err, res){
+      if (err){
+        throw err;
+      }
+      
+      cb(result);
     });
   }
 };
