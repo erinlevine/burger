@@ -6,13 +6,14 @@
 	text-align: center;
 	font-family: 'Bree Serif', serif;
 	color: #B12411;
-	font-size: 300%;
+	font-size: 500%;
 }
 
 
 
 .text-center {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Bree Serif', serif;
+	font-size: 120%;
 }
 
 .form-group {
@@ -24,11 +25,12 @@
 	padding-top: 30px;
 }
 
-.list-group-item {
-	background-color: #F6C847;
-	color: #b12411;
+.list-group-item, .list-group-item:first-child,  .list-group-item:last-child {
+	background-color: #25C38E;
+	font-family: 'Roboto', sans-serif;
+	color: white;
 	font-size: 20px;
-	/*border-style: solid;*/
+	font-weight: bold;
 	border-width: 5px;
 	border-color: #25C38E;
 	margin-top: 10px;
@@ -36,5 +38,12 @@
     border-bottom-right-radius: 1em;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
+    text-align: center;
 }
 
+
+
+
+.bottomForm{
+	background-color: #25C38E;
+}

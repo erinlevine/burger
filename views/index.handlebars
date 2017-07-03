@@ -41,7 +41,8 @@ Create a button in index.handlebars that will submit the user input into the dat
           {{#unless this.devoured}}
           <ol class="list-group-item">
             {{this.burger_name}}
-            <form action="/{{this.id}}?_method=PUT" method="POST">
+            <p></p>
+            <form class="bottomForm" action="/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devoured" value="1">
               <button type="submit" class="btn btn-default">Devour it!</button>
             </form>
@@ -60,7 +61,8 @@ Create a button in index.handlebars that will submit the user input into the dat
           {{#if this.devoured}}
           <li class="list-group-item">
             {{this.burger_name}}
-            <form action="/{{this.id}}?_method=PUT" method="POST">
+            <p></p>
+            <form class="bottomForm" action="/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devoured" value="0">
               <button type="submit" class="btn btn-default">Gimme More!</button>
             </form>
