@@ -43,6 +43,7 @@ router.put("/:id", function(req, res) {
   {
     id: req.params.id
   }, function() {
+    console.log("Test test test");
     res.redirect("/");
   });
 });
