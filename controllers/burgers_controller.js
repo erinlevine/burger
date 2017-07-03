@@ -5,5 +5,50 @@
 // Create the router for the app, and export the router at the end of your file.
 
 var express = require("express");
-import 'burger.js';
+
+var router = express.Router();
+
+var burger = require("../models/burger.js");
+
+//This is for the root. Also a get request:
+router.get("/", function(req, res) {
+  burger.all(function(data) {
+    var hbsObject = {
+      burgers: data
+    };
+    console.log(hbsObject);
+    res.render("index", hbsObject);
+  });
+});
+
+//This is for the root. insertOne is our function. req.body.name is the name of the new burger being added.
+router.post("/", function(req, res) {
+  burger.insertOne(
+    {
+      burger_name: req.body.name,
+      devoured: 0
+    }
+    , function() {
+    res.redirect("/");
+  });
+
+});
+
+//This is a put route. When the user clicks on the submit button, the new burger is then added to the DB.
+router.put("/:id", function(req, res) {
+  burger.updateOne(
+  {
+    devoured: req.body.devoured
+  },
+  {
+    id: req.params.id
+  }, function() {
+    res.redirect("/");
+  });
+});
+
+
+//Exporting to server.js:
+module.exports = router;
+
 
