@@ -12,7 +12,7 @@ var burger = require("../models/burger.js");
 
 //This is for the root. Also a get request:
 router.get("/", function(req, res) {
-  burger.all(function(data) {
+  burger.selectAll(function(data) {
     var hbsObject = {
       burgers: data
     };
