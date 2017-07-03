@@ -6,13 +6,31 @@
 
 var orm = require("./config/orm.js");
 
-// Find all parties, ordering them by party cost.
-orm.selectAndOrder("*", "parties", "party_cost");
 
-// Find parties by the name of the party
-orm.selectAll("burgers", "party_name", "Everybody Loves Raymond");
+var burger = {
+	selectAll: function(cb){
+		//"burgers" = tableInput
+		orm.selectAll("burgers", function(res){
+			cb(res);
+		});
+	},
 
-// Find clients with the most parties
-orm.findWhoHasMost("client_name", "client_id", "clients", "parties");
+	insertOne: function(object, cb){
+		//"burgers" = tableInput
+		//object is the new burger being added by user
+		orm.insertOne("burgers", object, function(res){
+			cb(res);
+		});
+	},
 
+	updateOne: function(whatToUpdate, whereToUpdate, cb){
+		//"burgers" = tableInput
+		//whatToUpdate and whereToUpdate are both objects
+		orm.updateOne("burgers", whatToUpdate, whereToUpdate, function(res){
+			cb(res);
+		});
+	}
+
+
+};
 module.exports = burger;
