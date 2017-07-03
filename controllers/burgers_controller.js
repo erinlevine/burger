@@ -16,13 +16,14 @@ router.get("/", function(req, res) {
     var hbsObject = {
       burgers: data
     };
-    console.log(hbsObject);
+    // console.log(hbsObject);
     res.render("index", hbsObject);
   });
 });
 
 //This is for the root. insertOne is our function. req.body.name is the name of the new burger being added.
 router.post("/", function(req, res) {
+  console.log(req.body);
   burger.insertOne(
     {
       burger_name: req.body.name,
@@ -43,7 +44,6 @@ router.put("/:id", function(req, res) {
   {
     id: req.params.id
   }, function() {
-    console.log("Test test test");
     res.redirect("/");
   });
 });

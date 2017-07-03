@@ -20,3 +20,12 @@
 .burgerImage {
 	padding-top: 30px;
 }
+
+.list-group-item {
+	background-color: #F6C847;
+	color: #b12411;
+	font-size: 20px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #25C38E;
+}
