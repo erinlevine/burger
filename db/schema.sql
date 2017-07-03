@@ -10,13 +10,11 @@
 CREATE DATABASE burgers_db;
 USE burgers_db;
 
--- Create the table tasks.
 CREATE TABLE burgers
 (
-id int NOT NULL AUTO_INCREMENT,
-burger_name varchar(30) NOT NULL,
-devoured boolean NOT NULL,
-date timestamp NOT NULL
-PRIMARY KEY (id)
+	id int NOT NULL AUTO_INCREMENT,
+	burger_name varchar(255) NOT NULL,
+	devoured BOOLEAN NOT NULL,
+	date TIMESTAMP NOT NULL,
+	PRIMARY KEY (id)
 );
-
